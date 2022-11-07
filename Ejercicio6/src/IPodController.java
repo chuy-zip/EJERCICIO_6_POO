@@ -19,7 +19,11 @@ public class IPodController implements IIpod_simulator{
 
 	@Override
 	public boolean SwitchONOFF(boolean actual_state) {
-		// TODO Auto-generated method stub
+		if(!actual_state) {
+			ON = true;
+			return ON; 
+		}
+		
 		return false;
 	}
 
