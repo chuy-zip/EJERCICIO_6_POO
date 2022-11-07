@@ -5,7 +5,7 @@ public class IPodController implements IIpod_simulator{
 	private ICancion[] My_IPodSongs;
 	private ICancion[] My_FavoriteSongs;
 	private int CurrentSongIndex;
-	private float volume;
+	private float Volume;
 	
 	
 	public IPodController(boolean on, boolean bloqued, ICancion[] allSongs, ICancion[] FavSongs, int currentSong, float _volume) {
@@ -14,7 +14,7 @@ public class IPodController implements IIpod_simulator{
 		My_IPodSongs = allSongs;
 		My_FavoriteSongs = FavSongs;
 		CurrentSongIndex = currentSong;
-		volume = _volume;	
+		Volume = _volume;	
 	}
 
 	@Override
@@ -30,100 +30,190 @@ public class IPodController implements IIpod_simulator{
 	
 	@Override
 	public boolean LockUnlockDevice(boolean actual_locked_state) {
-		// TODO Auto-generated method stub
+		if(!actual_locked_state) {
+			Blocked = true;
+			return Blocked;
+		}
 		return false;
 	}
 
 	
 	@Override
 	public float getVolume() {
-		// TODO Auto-generated method stub
-		return 0;
+		return Volume;
 	}
 
 	@Override
 	public float setVolume(float volume) {
-		// TODO Auto-generated method stub
-		return 0;
+		Volume = volume; 
+		return Volume;
 	}
 
 	@Override
 	public int Prev(int actual_index) {
-		// TODO Auto-generated method stub
-		return 0;
+		if(actual_index - 1 < 0) {
+			return 50;
+		}
+		
+		return actual_index - 1;
 	}
 
 	@Override
 	public int Next(int actual_index) {
-		// TODO Auto-generated method stub
-		return 0;
+		if(actual_index + 1 > 49) {
+			return 0;
+		}
+		
+		return actual_index + 1;
 	}
 
 	@Override
 	public int getActualIndex() {
-		// TODO Auto-generated method stub
-		return 0;
+		return CurrentSongIndex;
 	}
 
 	@Override
 	public void setActualIndex(int actual_index) throws Exception {
-		// TODO Auto-generated method stub
+		try {
+			
+			if(actual_index < 49) {
+				CurrentSongIndex = actual_index;
+			}
+			
+		} catch (Exception e) {
+			System.out.println("El indice elegido esta fuera del rango posible de las canciones");
+		}
 		
 	}
 
 	@Override
 	public void addToFavorite(ICancion _song) throws Exception {
-		// TODO Auto-generated method stub
+		try {
+			for(int i = 0; i < My_FavoriteSongs.length; i++) {
+				
+				if(My_FavoriteSongs[i] == null) {
+					My_FavoriteSongs[i] = _song;
+					break;
+				}
+				
+			}
+			
+			System.out.println("La lista de favoritos ya esta llena");
+		} catch (Exception e) {
+			System.out.println("La lista de favoritos ya esta llena");
+		}
 		
 	}
 
 	@Override
 	public ICancion selectSpecificSong(int index) throws Exception {
-		// TODO Auto-generated method stub
+		try {
+			return My_IPodSongs[index];
+			
+		} catch (Exception e) {
+			System.out.println("No se encontro una cancion en el indice solicitado");
+		}
+		
 		return null;
 	}
 
 	@Override
 	public ICancion selectSpecificFavoriteSong(int index) throws Exception {
-		// TODO Auto-generated method stub
+		try {
+			return My_FavoriteSongs[index];
+			
+		} catch (Exception e) {
+			System.out.println("No se encontro una cancion en el indice solicitado");
+		}
+		
 		return null;
 	}
 
 	@Override
 	public ICancion[] getAllSongs() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return My_IPodSongs;
 	}
 
 	@Override
 	public String getStatus(boolean _isON, boolean _isLocked, boolean _isPlaying, ICancion _actualSong) {
-		// TODO Auto-generated method stub
-		return null;
+		String on = "", locked = "", playing = "";
+		String song = "";
+		
+		if(_isON) {
+			on = "Encendido";
+			
+		}
+		if(!_isON){
+			on = "Apagado";
+		}
+		
+		if(_isLocked) {
+			locked = "Bloqueado";
+		}
+		
+		if(!_isLocked) {
+			locked = "Desbloqueado";
+		}
+		
+		if(_isPlaying) {
+			playing = "Reproduciendo";
+		}
+		
+		if(!_isPlaying) {
+			playing = "Reproduccion en pausa";
+		}
+		
+		try {
+			song = " Cancion: " + _actualSong.getTitle() +
+					" Artist: " + _actualSong.getArtist() +
+					" Album: " + _actualSong.getAlbum() +
+					" Duracion: " + _actualSong.getDuration(); 
+					
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		String status = "El IPod esta en estado de: " + on + " y "+ locked + ". " + playing + "song";
+		return status;
 	}
 
 	@Override
 	public boolean isValidIndex(int index) {
-		// TODO Auto-generated method stub
+		if(index >= 0 && index <= 10) {
+			return true;
+		}
 		return false;
 	}
 
 	@Override
 	public void addSongToList(String _titulo, String _artista, String _album, String _duracion, int _id)
 			throws Exception {
-		// TODO Auto-generated method stub
+		try {
+			for(int i = 0; i < My_IPodSongs.length; i++) {
+				
+				if(My_IPodSongs[i] == null) {
+					My_IPodSongs[i] = new Cancion(_titulo, _artista, _album, _duracion, i);
+					break;
+				}
+			}
+			System.out.println("No hay espacio disponible para agregar mas canciones a la lista");
+			
+		} catch (Exception e) {
+			System.out.println("No hay espacio disponible para agregar mas canciones a la lista");
+		}
 		
 	}
 
 	@Override
 	public void deleteSongFromList(int index) throws Exception {
-		// TODO Auto-generated method stub
+		My_IPodSongs[index] = null;
 		
 	}
 
 	@Override
 	public void deleteSongFromTop10(int index) throws Exception {
-		// TODO Auto-generated method stub
-		
+		My_FavoriteSongs[index] = null;
 	}
 
 }
