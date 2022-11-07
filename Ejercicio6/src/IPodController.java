@@ -2,11 +2,19 @@
 public class IPodController implements IIpod_simulator{
 	private boolean ON;
 	private boolean Blocked;
-	private ICancion[] My_Songs;
+	private ICancion[] My_IPodSongs;
+	private ICancion[] My_FavoriteSongs;
+	private int CurrentSongIndex;
+	private float volume;
 	
 	
-	public IPodController() {
-		
+	public IPodController(boolean on, boolean bloqued, ICancion[] allSongs, ICancion[] FavSongs, int currentSong, float _volume) {
+		ON = on;
+		Blocked = bloqued;
+		My_IPodSongs = allSongs;
+		My_FavoriteSongs = FavSongs;
+		CurrentSongIndex = currentSong;
+		volume = _volume;	
 	}
 
 	@Override
@@ -15,12 +23,14 @@ public class IPodController implements IIpod_simulator{
 		return false;
 	}
 
+	
 	@Override
 	public boolean LockUnlockDevice(boolean actual_locked_state) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
+	
 	@Override
 	public float getVolume() {
 		// TODO Auto-generated method stub

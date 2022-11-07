@@ -7,20 +7,23 @@ public class Cancion implements ICancion{
 	private String Duration;
 	private int ID;
 	
-	public Cancion() {
-		
+	public Cancion(String _Title, String _Artist, String _Album, String _Duration, int _ID) {
+		Title = _Title;
+		Artist = _Artist;
+		Album = _Album;
+		Duration = _Duration;
+		ID = _ID;
 	}
 
 	@Override
 	public void setTitle(String _title) {
-		// TODO Auto-generated method stub
+		Title = _title;
 		
 	}
 
 	@Override
 	public String getTitle() {
-		// TODO Auto-generated method stub
-		return null;
+		return Title;
 	}
 
 	@Override
