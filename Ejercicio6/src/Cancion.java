@@ -28,50 +28,44 @@ public class Cancion implements ICancion{
 
 	@Override
 	public void setArtist(String _artist) {
-		// TODO Auto-generated method stub
+		Artist = _artist;
 		
 	}
 
 	@Override
 	public String getArtist() {
-		// TODO Auto-generated method stub
-		return null;
+		return Artist;
 	}
 
 	@Override
 	public void setAlbum(String _album) {
-		// TODO Auto-generated method stub
-		
+		Album = _album;		
 	}
 
 	@Override
 	public String getAlbum() {
-		// TODO Auto-generated method stub
-		return null;
+		return Album;
 	}
 
 	@Override
 	public void setDuration(String _duration) {
-		// TODO Auto-generated method stub
-		
+		Duration = _duration;
 	}
 
 	@Override
 	public String getDuration() {
-		// TODO Auto-generated method stub
-		return null;
+		return Duration;
 	}
 
 	@Override
 	public void setID(int _id) {
-		// TODO Auto-generated method stub
+		ID = _id;
 		
 	}
 
 	@Override
 	public int getID() {
-		// TODO Auto-generated method stub
-		return 0;
+		return ID;
 	}
 
 }
