@@ -19,10 +19,21 @@ public class IPodController implements IIpod_simulator{
 
 	@Override
 	public boolean SwitchONOFF(boolean actual_state) {
-		if(!actual_state) {
-			ON = true;
+		System.out.println("Se recibio" + actual_state);
+		
+		if(actual_state) {
+			ON = false;
+			System.out.println("Se cambio a falso");
 			return ON; 
 		}
+		
+		else if(actual_state == false) {
+			//System.out.println(actual_state);
+			ON = true;
+			System.out.println("Se cambio a verdadero");
+			return ON; 
+		}
+		
 		
 		return false;
 	}
@@ -30,8 +41,8 @@ public class IPodController implements IIpod_simulator{
 	
 	@Override
 	public boolean LockUnlockDevice(boolean actual_locked_state) {
-		if(!actual_locked_state) {
-			Blocked = true;
+		if(actual_locked_state) {
+			Blocked = false;
 			return Blocked;
 		}
 		return false;
@@ -174,7 +185,7 @@ public class IPodController implements IIpod_simulator{
 			// TODO: handle exception
 		}
 		
-		String status = "El IPod esta en estado de: " + on + " y "+ locked + ". " + playing + "song";
+		String status = "El IPod esta en estado de: " + on + " y "+ locked + ". " + playing + song;
 		return status;
 	}
 
