@@ -32,7 +32,7 @@ public class Driver_Program {
 				ON = Controller.SwitchONOFF(ON);
 				if(!ON) {
 					playing = false;
-					Blocked = Controller.LockUnlockDevice(Blocked);
+					Blocked = Controller.LockUnlockDevice(false);
 				}
 			}
 			
@@ -42,33 +42,49 @@ public class Driver_Program {
 			
 			if (ON) {
 				
+				
 				if(opcion.equals("2")){
+					Blocked = Controller.LockUnlockDevice(Blocked);
 					
 				}
 				
-				else if(opcion.equals("3")){
+				if(!Blocked) {
 					
+					if(opcion.equals("3")){
+						if(playing) {
+							playing = false;
+						}
+						else {
+							playing = true;
+						}
+						
+					}
+					
+					else if(opcion.equals("4")){
+						
+					}
+					
+					else if(opcion.equals("5")){
+						
+					}
+					
+					else if(opcion.equals("6")){
+						
+					}
+					
+					else if(opcion.equals("7")){
+						
+					}
+					
+					else if(opcion.equals("8")){
+						
+					}
+					
+				}
+				else {
+					System.out.println("IPod esta bloqueado");
 				}
 				
-				else if(opcion.equals("4")){
-					
-				}
-				
-				else if(opcion.equals("5")){
-					
-				}
-				
-				else if(opcion.equals("6")){
-					
-				}
-				
-				else if(opcion.equals("7")){
-					
-				}
-				
-				else if(opcion.equals("8")){
-					
-				}
 				
 			}
 			else {
@@ -92,8 +108,8 @@ public class Driver_Program {
 		System.out.println(Status);
 		System.out.println("\nQue Deseas hacer: \n"
 						+ "1.Cambiar estado (Encendido/Apgado) \n"
-						+ "2.Poner play a la cancion \n"
-						+ "3.Bloquear/Desbloquear \n"
+						+ "2.Bloquear/Desbloquear \n"
+						+ "3.Poner play/pausar cancion \n"
 						+ "4.Ir a la siguiente Cancion\n"
 						+ "5.Ir a la cancion anterior\n"
 						+ "6.Agregar una cancion\n"

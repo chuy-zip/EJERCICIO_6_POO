@@ -19,18 +19,15 @@ public class IPodController implements IIpod_simulator{
 
 	@Override
 	public boolean SwitchONOFF(boolean actual_state) {
-		System.out.println("Se recibio" + actual_state);
 		
 		if(actual_state) {
 			ON = false;
-			System.out.println("Se cambio a falso");
 			return ON; 
 		}
 		
 		else if(actual_state == false) {
 			//System.out.println(actual_state);
 			ON = true;
-			System.out.println("Se cambio a verdadero");
 			return ON; 
 		}
 		
@@ -45,7 +42,7 @@ public class IPodController implements IIpod_simulator{
 			Blocked = false;
 			return Blocked;
 		}
-		return false;
+		return true;
 	}
 
 	
