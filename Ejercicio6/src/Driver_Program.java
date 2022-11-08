@@ -23,11 +23,13 @@ public class Driver_Program {
 		while(!opcion.equals("8")) {
 			
 			/**
-			 * The call for the method to 
+			 * The call for the method to show the status, it is shown independently if its on or off
 			 */
 			opcion = ShowIPod(Strscaner, status);
 			
-			
+			/**
+			 * Turning on the Ipod
+			 */
 			if (opcion.equals("1")){
 				ON = Controller.SwitchONOFF(ON);
 				if(!ON) {
@@ -36,10 +38,16 @@ public class Driver_Program {
 				}
 			}
 			
+			/**
+			 * Checking if the option was to quit the emulator
+			 */
 			if(opcion.equals("9")){
 				System.exit(0);
 			}
 			
+			/**
+			 * Checking for the ipod to be ON
+			 */
 			if (ON) {
 				
 				
@@ -48,6 +56,9 @@ public class Driver_Program {
 					
 				}
 				
+				/**
+				 * Checking for the ipod to be unlocked
+				 */
 				if(!Blocked) {
 					
 					if(opcion.equals("3")){
@@ -81,16 +92,26 @@ public class Driver_Program {
 					}
 					
 				}
+				/**
+				 * Message when ipod is Bloqued
+				 */
 				else {
 					System.out.println("IPod esta bloqueado");
 				}
 				
 				
 			}
+			
+			/**
+			 * Message whe ipod is OFF
+			 */
 			else {
 				System.out.println("El IPod esta apagado");
 			}
 			
+			/**
+			 * Refreshing Status
+			 */
 			status = Controller.getStatus(ON, Blocked, playing, My_IPodSongs[CurrentSongIndex]);
 			
 		}
