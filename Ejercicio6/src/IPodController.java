@@ -60,7 +60,7 @@ public class IPodController implements IIpod_simulator{
 	@Override
 	public int Prev(int actual_index) {
 		if(actual_index - 1 < 0) {
-			return 50;
+			return 49;
 		}
 		
 		return actual_index - 1;
@@ -74,7 +74,7 @@ public class IPodController implements IIpod_simulator{
 		
 		return actual_index + 1;
 	}
-
+	
 	@Override
 	public int getActualIndex() {
 		return CurrentSongIndex;

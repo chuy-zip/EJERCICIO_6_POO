@@ -20,7 +20,7 @@ public class Driver_Program {
 		
 		String opcion = "0";
 		
-		while(!opcion.equals("8")) {
+		while(!opcion.equals("11")) {
 			
 			/**
 			 * The call for the method to show the status, it is shown independently if its on or off
@@ -41,7 +41,7 @@ public class Driver_Program {
 			/**
 			 * Checking if the option was to quit the emulator
 			 */
-			if(opcion.equals("9")){
+			if(opcion.equals("11")){
 				System.exit(0);
 			}
 			
@@ -53,7 +53,6 @@ public class Driver_Program {
 				
 				if(opcion.equals("2")){
 					Blocked = Controller.LockUnlockDevice(Blocked);
-					
 				}
 				
 				/**
@@ -62,32 +61,69 @@ public class Driver_Program {
 				if(!Blocked) {
 					
 					if(opcion.equals("3")){
+						
+						if (volume + 0.5 < 10) {
+							
+							volume += 0.5;
+							
+							volume = Controller.setVolume(volume);
+							
+							System.out.println("Volumen actual: " + volume);
+						}
+						else {
+							volume = 10;
+							System.out.println("Volumen actual: " + volume);
+						}
+						
+					}
+					
+					else if(opcion.equals("4")){
+						if (volume - 0.5 > 0) {
+							
+							volume -= 0.5;
+							
+							volume = Controller.setVolume(volume);
+							
+							System.out.println("Volumen actual: " + volume);
+						}
+						else {
+							volume = 0;
+							System.out.println("Volumen actual: " + volume);
+						}
+					}
+					
+					else if(opcion.equals("5")){
 						if(playing) {
 							playing = false;
 						}
 						else {
 							playing = true;
 						}
-						
-					}
-					
-					else if(opcion.equals("4")){
-						
-					}
-					
-					else if(opcion.equals("5")){
-						
 					}
 					
 					else if(opcion.equals("6")){
-						
+						CurrentSongIndex = Controller.Next(CurrentSongIndex);
+						System.out.println("Posicion Actual del reproductor: " + CurrentSongIndex);
 					}
 					
 					else if(opcion.equals("7")){
+						CurrentSongIndex = Controller.Prev(CurrentSongIndex);
+						System.out.println("Posicion Actual del reproductor: " + CurrentSongIndex);
+					}
+					
+					else if(opcion.equals("8")){
 						
 					}
 					
 					else if(opcion.equals("8")){
+						
+					}
+					
+					else if(opcion.equals("9")){
+						
+					}
+					
+					else if(opcion.equals("10")){
 						
 					}
 					
@@ -129,14 +165,16 @@ public class Driver_Program {
 		System.out.println(Status);
 		System.out.println("\nQue Deseas hacer: \n"
 						+ "1.Cambiar estado (Encendido/Apgado) \n"
-						+ "2.Bloquear/Desbloquear \n"
-						+ "3.Poner play/pausar cancion \n"
-						+ "4.Ir a la siguiente Cancion\n"
-						+ "5.Ir a la cancion anterior\n"
-						+ "6.Agregar una cancion\n"
-						+ "7.Agregar la cancion actual al top 10 favoritos\n"
-						+ "8.Poner una cancion de la lista de favoritos\n"
-						+ "9.Salir de la simulacion");
+						+ "2.Bloquear/Desbloquear\n"
+						+ "3.Subir volumen\n"
+						+ "4.Bajar Volumen\n"
+						+ "5.Poner play/pausar cancion \n"
+						+ "6.Ir a la siguiente Cancion\n"
+						+ "7.Ir a la cancion anterior\n"
+						+ "8.Agregar una cancion\n"
+						+ "9.Agregar la cancion actual al top 10 favoritos\n"
+						+ "10.Poner una cancion de la lista de favoritos\n"
+						+ "11.Salir de la simulacion");
 		String Selection = _strScan.next();
 		return Selection;
 		
