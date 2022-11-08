@@ -88,7 +88,7 @@ public class Driver_Program {
 				
 			}
 			else {
-				System.out.println("No se puede realizar la accion, el IPod esta apagado");
+				System.out.println("El IPod esta apagado");
 			}
 			
 			status = Controller.getStatus(ON, Blocked, playing, My_IPodSongs[CurrentSongIndex]);
