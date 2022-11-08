@@ -12,6 +12,10 @@ public class Driver_Program {
 		int CurrentSongIndex = 0;
 		float volume = 0;
 		
+		if(My_IPodSongs[CurrentSongIndex] == null) {
+			System.out.println("Es null");
+		}
+		
 		Scanner Strscaner = new Scanner(System.in);
 		
 		IPodController Controller = new IPodController(ON, Blocked, My_IPodSongs, My_FavoriteSongs, CurrentSongIndex, volume);  
@@ -112,7 +116,7 @@ public class Driver_Program {
 					}
 					
 					else if(opcion.equals("8")){
-						
+						AddSong(Strscaner, Controller);
 					}
 					
 					else if(opcion.equals("8")){
@@ -179,6 +183,31 @@ public class Driver_Program {
 		return Selection;
 		
 	}	
+	
+	public static void AddSong(Scanner _strScan, IPodController controller) {
+		
+		System.out.println("\n ¿Cual es el nombre de la cancion? \n");
+		String songName = _strScan.next();
+		
+		System.out.println("\n ¿Quien es el autor de la cancion? \n");
+		String songArtist = _strScan.next();
+		
+		System.out.println("\n ¿A que album pertenece la cancion? \n");
+		String songAlbum = _strScan.next();
+		
+		System.out.println("\n ¿Cuanto dura la cancion? \n");
+		String songDuration = _strScan.next();
+		
+		try {
+			controller.addSongToList(songName, songArtist, songAlbum, songDuration, 0);
+		} catch (Exception e) {
+			System.out.println("Error al agregar la cancino");
+			e.printStackTrace();
+		}
+		
+		return ;
+		
+	}
 	
 	
 }

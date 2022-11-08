@@ -45,7 +45,6 @@ public class IPodController implements IIpod_simulator{
 		return true;
 	}
 
-	
 	@Override
 	public float getVolume() {
 		return Volume;
@@ -205,7 +204,7 @@ public class IPodController implements IIpod_simulator{
 					break;
 				}
 			}
-			System.out.println("No hay espacio disponible para agregar mas canciones a la lista");
+			System.out.println("Agregado");
 			
 		} catch (Exception e) {
 			System.out.println("No hay espacio disponible para agregar mas canciones a la lista");
