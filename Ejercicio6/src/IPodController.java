@@ -219,6 +219,7 @@ public class IPodController implements IIpod_simulator{
 	public void deleteSongFromList(int index) throws Exception {
 		try {
 			My_IPodSongs[index] = null;
+			System.out.println("Se a borrado la informacion en la posicion: " + index);
 		} catch (Exception e) {
 			System.out.println("Indice fuera de rango");
 		}
@@ -230,6 +231,7 @@ public class IPodController implements IIpod_simulator{
 	public void deleteSongFromTop10(int index) throws Exception {
 		try {
 			My_FavoriteSongs[index] = null;
+			System.out.println("Se a borrado la informacion en la posicion: " + index);
 		} catch (Exception e) {
 			System.out.println("Indice fuera de rango");
 		}

@@ -24,7 +24,7 @@ public class Driver_Program {
 		
 		String opcion = "0";
 		
-		while(!opcion.equals("11")) {
+		while(!opcion.equals("15")) {
 			
 			/**
 			 * The call for the method to show the status, it is shown independently if its on or off
@@ -142,8 +142,6 @@ public class Driver_Program {
 					
 					/**
 					 * Add song to the favorite lists
-					 * This method had to be implemented in the UI also as in the controller there is no method that returns
-					 * the List of favorite songs, to change the UI variable.
 					 */
 					else if(opcion.equals("9")){
 						ICancion _song = My_IPodSongs[CurrentSongIndex];
@@ -158,7 +156,7 @@ public class Driver_Program {
 					}
 					
 					/**
-					 * Search a song for an speciic index
+					 * Search a song for an speciic index, it can be a song from the general list or from favorites
 					 */
 					else if(opcion.equals("10")){
 						
@@ -190,12 +188,32 @@ public class Driver_Program {
 						
 					}
 					
+					/**
+					 * Deleteing song from main playlist
+					 */
 					else if(opcion.equals("11")){
-						
+						System.out.println("¿Cual es la posicion de la cancion que deseas eliminar?");
+						int indexToDelete = Strscaner.nextInt();
+						try {
+
+							Controller.deleteSongFromList(indexToDelete);
+						} catch (Exception e) {
+							System.out.println("La posicion solicitada no es valida");
+						}
 					}
 					
+					/**
+					 * Deleting songr from favorite songs
+					 */
 					else if(opcion.equals("12")){
-						
+						System.out.println("¿Cual es la posicion de la cancion que deseas eliminar?");
+						int indexToDelete = Strscaner.nextInt();
+						try {
+
+							Controller.deleteSongFromTop10(indexToDelete);
+						} catch (Exception e) {
+							System.out.println("La posicion solicitada no es valida");
+						}
 					}
 					
 					else if(opcion.equals("13")){
