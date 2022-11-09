@@ -217,13 +217,23 @@ public class IPodController implements IIpod_simulator{
 
 	@Override
 	public void deleteSongFromList(int index) throws Exception {
-		My_IPodSongs[index] = null;
+		try {
+			My_IPodSongs[index] = null;
+		} catch (Exception e) {
+			System.out.println("Indice fuera de rango");
+		}
+		
 		
 	}
 
 	@Override
 	public void deleteSongFromTop10(int index) throws Exception {
-		My_FavoriteSongs[index] = null;
+		try {
+			My_FavoriteSongs[index] = null;
+		} catch (Exception e) {
+			System.out.println("Indice fuera de rango");
+		}
+		
 	}
 
 }

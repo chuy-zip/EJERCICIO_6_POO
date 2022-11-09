@@ -45,7 +45,7 @@ public class Driver_Program {
 			/**
 			 * Checking if the option was to quit the emulator
 			 */
-			if(opcion.equals("11")){
+			if(opcion.equals("15")){
 				System.exit(0);
 			}
 			
@@ -149,26 +149,64 @@ public class Driver_Program {
 						ICancion _song = My_IPodSongs[CurrentSongIndex];
 						try {
 							Controller.addToFavorite(My_IPodSongs[CurrentSongIndex]);							
-							for(int i = 0; i < My_FavoriteSongs.length; i++) {
-									
-								if(My_FavoriteSongs[i] == null && _song != null) {
-									My_FavoriteSongs[i] = _song;
-									break;
-								}
-									
 							}
 								
-						} catch (Exception e) {
+						 catch (Exception e) {
 							System.out.println("No se pudo agregar la cancion, el espacio actual esta vacio o la lista esta llena");
 						}
 						
 					}
 					
+					/**
+					 * Search a song for an speciic index
+					 */
 					else if(opcion.equals("10")){
+						
+						System.out.println("La cancion es: \n1.De Lista General \n2.De Favoritos");
+						String Selection = Strscaner.next();
+						
+						System.out.println("Cual es la posicion de la cancion que deseas buscar");
+						int Selection2 = Strscaner.nextInt();
+						
+						if(Selection.equals("1")) {
+						try {
+							ICancion song =  Controller.selectSpecificSong(Selection2);
+							System.out.println("Se reprodujo la cancion: " + song.getTitle() + " del artista " + song.getArtist() + " del album " + song.getAlbum()
+												+ "\nCon un tiempo de: " + song.getDuration() + " Que se encuentra en la posicion: " + song.getID());
+						} catch (Exception e) {
+							System.out.println("No se encontro una cancion para la posicion solicitada");
+						}
+								
+						}
+						else if(Selection.equals("2")) {
+							try {
+								ICancion song =  Controller.selectSpecificFavoriteSong(Selection2);
+								System.out.println("Se reprodujo la cancion: " + song.getTitle() + " del artista " + song.getArtist() + " del album " + song.getAlbum()
+													+ "\nCon un tiempo de: " + song.getDuration() + "Que se encuentra en la posicion: " + song.getID());
+							} catch (Exception e) {
+								System.out.println("No se encontro una cancion para la posicion solicitada");
+							}
+						}
+						
+					}
+					
+					else if(opcion.equals("11")){
 						
 					}
 					
 					else if(opcion.equals("12")){
+						
+					}
+					
+					else if(opcion.equals("13")){
+						
+					}
+					
+					else if(opcion.equals("14")){
+						
+					}
+					
+					else if(opcion.equals("112")){
 						
 					}
 					
@@ -218,8 +256,12 @@ public class Driver_Program {
 						+ "7.Ir a la cancion anterior\n"
 						+ "8.Agregar una cancion\n"
 						+ "9.Agregar la cancion actual al top 10 favoritos\n"
-						+ "10.Poner una cancion de la lista de favoritos\n"
-						+ "11.Salir de la simulacion");
+						+ "10.Poner una cancion especifica\n"
+						+ "11.Eliminar cancion de lista general\n"
+						+ "12.Eliminar cancion de favoritos\n"
+						+ "13.Mostrar Lista de Canciones\n"
+						+ "14.Mostrar Lista de Favoritos\n"
+						+ "15.Salir de la simulacion\n");
 		String Selection = _strScan.next();
 		return Selection;
 		
@@ -227,16 +269,16 @@ public class Driver_Program {
 	
 	public static void AddSong(Scanner _strScan, IPodController controller) {
 		
-		System.out.println("\n ¿Cual es el nombre de la cancion? \n");
+		System.out.println("¿Cual es el nombre de la cancion?");
 		String songName = _strScan.next();
 		
-		System.out.println("\n ¿Quien es el autor de la cancion? \n");
+		System.out.println("¿Quien es el autor de la cancion?");
 		String songArtist = _strScan.next();
 		
-		System.out.println("\n ¿A que album pertenece la cancion? \n");
+		System.out.println("¿A que album pertenece la cancion?");
 		String songAlbum = _strScan.next();
 		
-		System.out.println("\n ¿Cuanto dura la cancion? \n");
+		System.out.println("¿Cuanto dura la cancion?");
 		String songDuration = _strScan.next();
 		
 		try {
