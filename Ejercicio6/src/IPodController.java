@@ -100,7 +100,9 @@ public class IPodController implements IIpod_simulator{
 			for(int i = 0; i < My_FavoriteSongs.length; i++) {
 				
 				if(My_FavoriteSongs[i] == null && _song != null) {
+					
 					My_FavoriteSongs[i] = _song;
+					
 					System.out.println("Cancion Agregada a favoritos");
 					return;
 				}

@@ -216,12 +216,18 @@ public class Driver_Program {
 						}
 					}
 					
+					/**
+					 * Showing al songs from the general list
+					 */
 					else if(opcion.equals("13")){
-						
+						showMySongs(My_IPodSongs);
 					}
 					
+					/**
+					 * Showing al songos from favorites
+					 */
 					else if(opcion.equals("14")){
-						
+						showMySongs(My_FavoriteSongs);
 					}
 					
 					else if(opcion.equals("112")){
@@ -259,6 +265,12 @@ public class Driver_Program {
 		
 	}
 	
+	/**
+	 * Display of the main menu
+	 * @param _strScan Scanner for input
+	 * @param Status A string that contains all the currente status of the simulator
+	 * @return
+	 */
 	public static String ShowIPod(Scanner _strScan, String Status) {
 		System.out.println("**********************************");
 		System.out.println("*Bienvenido al simulador de IPOD**");
@@ -285,6 +297,11 @@ public class Driver_Program {
 		
 	}	
 	
+	/**
+	 * Method that asks the necessary information to create and save a new song to the Main Song List
+	 * @param _strScan scanner for input
+	 * @param controller logic controller to create a new objecto Cancion
+	 */
 	public static void AddSong(Scanner _strScan, IPodController controller) {
 		
 		System.out.println("¿Cual es el nombre de la cancion?");
@@ -307,6 +324,21 @@ public class Driver_Program {
 		}
 		
 		return ;
+		
+	}
+	/**
+	 * Method that shosthe content of a list of songs that implement ICancion
+	 * @param Mysongs
+	 */
+	public static void showMySongs(ICancion[] Mysongs) {
+		System.out.println("Lista de Canciones: \n");
+		for (int i = 0; i < Mysongs.length; i++) {
+			if(Mysongs[i] != null) {
+				ICancion song = Mysongs[i];
+				System.out.println("Cancion: " + song.getTitle() + ", Artista " + song.getArtist() + ", Album: " + song.getAlbum()
+				+ "Duracion: " + song.getDuration() + "Posicion: " + i);
+			}
+		}
 		
 	}
 	
