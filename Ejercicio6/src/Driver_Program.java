@@ -150,7 +150,6 @@ public class Driver_Program {
 					 * Add song to the favorite lists
 					 */
 					else if(opcion.equals("9")){
-						ICancion _song = My_IPodSongs[CurrentSongIndex];
 						try {
 							Controller.addToFavorite(My_IPodSongs[CurrentSongIndex]);							
 							}
@@ -264,10 +263,6 @@ public class Driver_Program {
 			status = Controller.getStatus(ON, Blocked, playing, My_IPodSongs[CurrentSongIndex]);
 			
 		}
-		
-		
-	
-	
 		
 	}
 	
