@@ -4,7 +4,7 @@ public class Driver_Program {
 	
 	/**
 	 * Driver Program made By Rcaro Chuy 221007
-	 * @param args
+	 * @param args Arguments for clas main
 	 */
 	public static void main(String[] args) {
 		
@@ -270,7 +270,7 @@ public class Driver_Program {
 	 * Display of the main menu
 	 * @param _strScan Scanner for input
 	 * @param Status A string that contains all the currente status of the simulator
-	 * @return
+	 * @return String returns th input from the user
 	 */
 	public static String ShowIPod(Scanner _strScan, String Status) {
 		System.out.println("**********************************");
@@ -329,7 +329,7 @@ public class Driver_Program {
 	}
 	/**
 	 * Method that shosthe content of a list of songs that implement ICancion
-	 * @param Mysongs
+	 * @param Mysongs, receives a list of songs
 	 */
 	public static void showMySongs(ICancion[] Mysongs) {
 		System.out.println("Lista de Canciones: \n");

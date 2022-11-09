@@ -33,8 +33,8 @@ public interface IIpod_simulator {
 	
 	/***
 	 * Establece el volumen actual
-	 * @param volume 
-	 * @return
+	 * @param volume the current volume of the simulation
+	 * @return the changed value of volume
 	 */
 	public float setVolume(float volume);
 	
@@ -60,7 +60,7 @@ public interface IIpod_simulator {
 	
 	/***
 	 * Establece el indice Actual
-	 * @param actual_index 
+	 * @param actual_index the current song that is being played in the simulation
 	 * @exception Exception Cuando el indice esta fuera de rango
 	 */
 	public void setActualIndex(int actual_index) throws Exception;
@@ -113,25 +113,25 @@ public interface IIpod_simulator {
 	
 	/***
 	 * Se agrega una cancion para ser instanciada en el metodo y agregada a la lista
-	 * @param _titulo 
-	 * @param _artista
-	 * @param _album
-	 * @param _duracion
-	 * @param _id
+	 * @param _titulo title of song
+	 * @param _artista artist who composed the song
+	 * @param _album album where the song is from
+	 * @param _duracion duration of the song
+	 * @param _id identification number, it is the position of the song (0-49)
 	 * @exception Exception si el listado esta lleno
 	 */
 	public void addSongToList(String _titulo, String _artista, String _album, String _duracion, int _id) throws Exception;
 	
 	/**
 	 * Este metodo elimina una cancion de una posicion determinada
-	 * @param index
+	 * @param index The index of song that wants to be deleted
 	 * @exception Exception Cuando el indice esta fuera de rango
 	 */
 	public void deleteSongFromList(int index) throws Exception;
 	
 	/**
 	 * Elimina una cancion de la lista de favoritas pero no del listado general
-	 * @param index
+	 * @param index The index of a song that wants to be deleted
 	 * @exception Exception Cuando el indice esta fuera de rango
 	 */
 	public void deleteSongFromTop10(int index) throws Exception;
