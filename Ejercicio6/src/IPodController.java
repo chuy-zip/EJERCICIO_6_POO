@@ -95,17 +95,20 @@ public class IPodController implements IIpod_simulator{
 
 	@Override
 	public void addToFavorite(ICancion _song) throws Exception {
+		
 		try {
 			for(int i = 0; i < My_FavoriteSongs.length; i++) {
 				
-				if(My_FavoriteSongs[i] == null) {
+				if(My_FavoriteSongs[i] == null && _song != null) {
 					My_FavoriteSongs[i] = _song;
-					break;
+					System.out.println("Cancion Agregada a favoritos");
+					return;
 				}
 				
 			}
 			
-			System.out.println("La lista de favoritos ya esta llena");
+			System.out.println("No se pudo agregar la cancion, el espacio actual esta vacio o la lista esta llena");
+			
 		} catch (Exception e) {
 			System.out.println("La lista de favoritos ya esta llena");
 		}

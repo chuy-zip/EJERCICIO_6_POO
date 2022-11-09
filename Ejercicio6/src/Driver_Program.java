@@ -54,16 +54,21 @@ public class Driver_Program {
 			 */
 			if (ON) {
 				
-				
+				/**
+				 * Checking for the ipod to be unlocked
+				 */
 				if(opcion.equals("2")){
 					Blocked = Controller.LockUnlockDevice(Blocked);
 				}
 				
 				/**
-				 * Checking for the ipod to be unlocked
+				 * If the ipod is both on and unlocked
 				 */
 				if(!Blocked) {
 					
+					/**
+					 * Volume up
+					 */
 					if(opcion.equals("3")){
 						
 						if (volume + 0.5 < 10) {
@@ -81,6 +86,9 @@ public class Driver_Program {
 						
 					}
 					
+					/**
+					 * Volume down
+					 */
 					else if(opcion.equals("4")){
 						if (volume - 0.5 > 0) {
 							
@@ -96,6 +104,9 @@ public class Driver_Program {
 						}
 					}
 					
+					/**
+					 * Play or pause a song
+					 */
 					else if(opcion.equals("5")){
 						if(playing) {
 							playing = false;
@@ -105,29 +116,59 @@ public class Driver_Program {
 						}
 					}
 					
+					/**
+					 * Go to the next space for song in the ipod (from 0 to 49)
+					 */
 					else if(opcion.equals("6")){
 						CurrentSongIndex = Controller.Next(CurrentSongIndex);
 						System.out.println("Posicion Actual del reproductor: " + CurrentSongIndex);
 					}
 					
+					/**
+					 * Go to the previous space for song in the ipod (from 0 to 49)
+					 */
 					else if(opcion.equals("7")){
 						CurrentSongIndex = Controller.Prev(CurrentSongIndex);
 						System.out.println("Posicion Actual del reproductor: " + CurrentSongIndex);
 					}
 					
+					/**
+					 * Adding a song to the list of current songs
+					 */
 					else if(opcion.equals("8")){
 						AddSong(Strscaner, Controller);
+						My_IPodSongs = Controller.getAllSongs();
 					}
 					
-					else if(opcion.equals("8")){
-						
-					}
-					
+					/**
+					 * Add song to the favorite lists
+					 * This method had to be implemented in the UI also as in the controller there is no method that returns
+					 * the List of favorite songs, to change the UI variable.
+					 */
 					else if(opcion.equals("9")){
+						ICancion _song = My_IPodSongs[CurrentSongIndex];
+						try {
+							Controller.addToFavorite(My_IPodSongs[CurrentSongIndex]);							
+							for(int i = 0; i < My_FavoriteSongs.length; i++) {
+									
+								if(My_FavoriteSongs[i] == null && _song != null) {
+									My_FavoriteSongs[i] = _song;
+									break;
+								}
+									
+							}
+								
+						} catch (Exception e) {
+							System.out.println("No se pudo agregar la cancion, el espacio actual esta vacio o la lista esta llena");
+						}
 						
 					}
 					
 					else if(opcion.equals("10")){
+						
+					}
+					
+					else if(opcion.equals("12")){
 						
 					}
 					
