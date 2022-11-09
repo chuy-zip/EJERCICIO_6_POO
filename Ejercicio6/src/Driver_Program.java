@@ -110,6 +110,8 @@ public class Driver_Program {
 					
 					/**
 					 * Play or pause a song
+					 * This variables are handled in the UI as there where no specific mehtods for this variables
+					 * declared on the interface
 					 */
 					else if(opcion.equals("5")){
 						if(playing) {
